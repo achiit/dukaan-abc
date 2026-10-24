@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover Agrumea, a Mediterranean citrus farm rooted in nature and tradition.">
+  <title>Agrumea — The Essence of Nature</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f5ec;
+      --green: #283d2d;
+      --green-dark: #17291c;
+      --orange: #d97836;
+      --text: #343c31;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+
+    .container {
+      width: min(1200px, 90%);
+      margin: auto;
+    }
+
+    /* Navigation */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 28px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      letter-spacing: -1px;
+      font-weight: 600;
+    }
+
+    .logo span {
+      color: #f0b36b;
+    }
+
+    nav {
+      display: flex;
+      gap: 38px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: opacity .3s;
+    }
+
+    nav a:hover {
+      opacity: .65;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(rgba(10, 31, 15, .35), rgba(10, 31, 15, .5)),
+        url('https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=2200&q=85')
+        center/cover;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 100px 20px 50px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 9vw, 145px);
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 em {
+      font-weight: 400;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 17px 38px;
+      background: var(--cream);
+      color: var(--green);
+      border: 1px solid var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 700;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: white;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 10px;
+    }
+
+    .scroll-indicator::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 45px;
+      background: white;
+      margin: 15px auto 0;
+    }
+
+    /* Introduction */
+
+    .intro {
+      padding: 150px 20px;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .section-label {
+      color: var(--orange);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .intro h2 {
+      max-width: 960px;
+      margin: auto;
+      font-size: clamp(35px, 5vw, 68px);
+      line-height: 1.3;
+      color: var(--green);
+    }
+
+    .intro h2 em {
+      color: var(--orange);
+    }
+
+    .intro p {
+      max-width: 600px;
+      margin: 35px auto 0;
+      font-size: 16px;
+      line-height: 2;
+      color: #777c70;
+    }
+
+    /* Story */
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 700px;
+      background: var(--green);
+      color: white;
+    }
+
+    .story-image {
+      background:
+        url('https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=1200&q=85')
+        center/cover;
+      min-height: 550px;
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 12%;
+    }
+
+    .story h2 {
+      font-size: clamp(45px, 5vw, 75px);
+      line-height: 1.15;
+      margin-bottom: 35px;
+    }
+
+    .story p {
+      color: #d4dfd1;
+      font-size: 15px;
+      line-height: 2.1;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .text-link {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid currentColor;
+      transition: opacity .3s;
+    }
+
+    .text-link:hover {
+      opacity: .6;
+    }
+
+    /* Products */
+
+    .products {
+      padding: 140px 0;
+      text-align: center;
+    }
+
+    .products h2 {
+      font-size: clamp(45px, 6vw, 80px);
+      color: var(--green);
+      margin-bottom: 65px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .product-card {
+      text-align: left;
+    }
+
+    .product-image {
+      overflow: hidden;
+      height: 420px;
+      background: #e5e5d9;
+    }
+
+    .product-image img {
+      height: 100%;
+      transition: transform .7s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .product-card h3 {
+      font-size: 29px;
+      margin: 25px 0 8px;
+      color: var(--green);
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #84877d;
+      line-height: 1.8;
+    }
+
+    /* Quote */
+
+    .quote {
+      padding: 140px 20px;
+      background: #e9ebdf;
+      text-align: center;
+    }
+
+    .quote h2 {
+      max-width: 950px;
+      margin: auto;
+      font-size: clamp(35px, 5vw, 68px);
+      color: var(--green);
+      line-height: 1.4;
+    }
+
+    .quote h2 em {
+      color: var(--orange);
+    }
+
+    /* Gallery */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 8px;
+      background: white;
+    }
+
+    .gallery img {
+      height: 390px;
+      transition: filter .3s;
+    }
+
+    .gallery img:hover {
+      filter: brightness(.8);
+    }
+
+    /* Contact */
+
+    .contact {
+      padding: 140px 20px;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .contact h2 {
+      font-size: clamp(45px, 6vw, 85px);
+      color: var(--green);
+      margin-bottom: 30px;
+    }
+
+    .contact p {
+      max-width: 550px;
+      margin: 0 auto 40px;
+      line-height: 2;
+      color: #777;
+    }
+
+    .contact .btn {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .contact .btn:hover {
+      background: transparent;
+      color: var(--green);
+    }
+
+    /* Footer */
+
+    footer {
+      background: var(--green-dark);
+      color: white;
+      padding: 70px 5% 25px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 70px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 55px;
+    }
+
+    .footer-description {
+      max-width: 300px;
+      color: #aebaaa;
+      font-size: 14px;
+      line-height: 2;
+      margin-top: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 80px;
+    }
+
+    .footer-links h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .footer-links a {
+      display: block;
+      font-size: 14px;
+      color: #aebaaa;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #405042;
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #aebaaa;
+      font-size: 12px;
+    }
+
+    /* Animations */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile */
+
+    @media (max-width: 900px) {
+      .story {
+        grid-template-columns: 1fr;
+      }
+
+      .story-content {
+        padding: 80px 8%;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-links {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 5%;
+      }
+
+      .logo {
+        font-size: 29px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: var(--green);
+        padding: 30px;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .intro, .products, .quote, .contact {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 380px;
+      }
+
+      .gallery img {
+        height: 220px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .hero-content {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">agrumea<span>.</span></a>
+
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav id="navigation">
+      <a href="#home">Home</a>
+      <a href="#about">Our Story</a>
+      <a href="#products">Our Products</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">Rooted in Sicily · Inspired by Nature</div>
+
+      <h1>The art of<br><em>nature.</em></h1>
+
+      <p class="hero-description">
+        Where the warmth of the Mediterranean sun meets
+        generations of passion for the land.
+      </p>
+
+      <a href="#about" class="btn">Discover Our World</a>
+    </div>
+
+    <div class="scroll-indicator">Scroll to Explore</div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="intro" id="about">
+    <div class="container reveal">
+      <div class="section-label">Welcome to Agrumea</div>
+
+      <h2>
+        A story of <em>sunshine,</em><br>
+        fertile earth and<br>
+        timeless traditions.
+      </h2>
+
+      <p>
+        In the heart of the Mediterranean, our land tells a story
+        of authenticity, dedication and respect for nature.
+        Every fruit is a celebration of the extraordinary beauty
+        that surrounds us.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story" id="story">
+    <div class="story-image" role="img" aria-label="Fresh citrus fruit"></div>
+
+    <div class="story-content">
+      <div class="section-label">Our Philosophy</div>
+
+      <h2>
+        Grown with<br>
+        love. Rooted<br>
+        in tradition.
+      </h2>
+
+      <p>
+        We believe that the finest things come from patience,
+        passion and a deep connection with the earth.
+
+        Our approach celebrates the natural rhythm of the seasons,
+        respecting the environment while cultivating fruits
+        full of character and Mediterranean flavor.
+      </p>
+
+      <a href="#products" class="text-link">Explore Our Products &nbsp; ↗</a>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-label reveal">From Our Land</div>
+      <h2 class="reveal">Nature's finest gifts.</h2>
+
+      <div class="product-grid">
+        <article class="product-card reveal">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=900&q=85"
+              alt="Fresh oranges"
+              loading="lazy"
+            >
+          </div>
+
+          <h3>Sweet Oranges</h3>
+          <p>
+            Sun-ripened citrus bursting with freshness,
+            sweetness and authentic Mediterranean character.
+          </p>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=900&q=85"
+              alt="Fresh lemons"
+              loading="lazy"
+            >
+          </div>
+
+          <h3>Fresh Lemons</h3>
+          <p>
+            Vibrant, fragrant and naturally refreshing.
+            A true expression of our beautiful land.
+          </p>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=900&q=85"
+              alt="Mediterranean citrus"
+              loading="lazy"
+            >
+          </div>
+
+          <h3>Mediterranean Citrus</h3>
+          <p>
+            A carefully cultivated selection of seasonal
+            citrus fruits inspired by nature.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote">
+    <div class="container reveal">
+      <div class="section-label">Our Inspiration</div>
+
+      <h2>
+        “The beauty of nature lies in its
+        <em>simplicity, authenticity</em>
+        and extraordinary generosity.”
+      </h2>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <img
+      src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=700&q=85"
+      alt="Oranges"
+      loading="lazy"
+    >
+
+    <img
+      src="https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=700&q=85"
+      alt="Lemons"
+      loading="lazy"
+    >
+
+    <img
+      src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=700&q=85"
+      alt="Citrus harvest"
+      loading="lazy"
+    >
+
+    <img
+      src="https://images.unsplash.com/photo-1598182198871-d3f4ab4fd181?auto=format&fit=crop&w=700&q=85"
+      alt="Fresh citrus"
+      loading="lazy"
+    >
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container reveal">
+      <div class="section-label">Get In Touch</div>
+
+      <h2>Let's grow together.</h2>
+
+      <p>
+        Discover the authentic flavors of our land.
+        For collaborations, information or simply to say hello,
+        we'd love to hear from you.
+      </p>
+
+      <a href="mailto:hello@example.com" class="btn">
+        Contact Us ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">agrumea.</div>
+
+        <p class="footer-description">
+          A celebration of Mediterranean nature,
+          authentic flavors and the timeless beauty
+          of our land.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Explore</h4>
+          <a href="#home">Home</a>
+          <a href="#about">Our Story</a>
+          <a href="#products">Products</a>
+          <a href="#gallery">Gallery</a>
+        </div>
+
+        <div>
+          <h4>Connect</h4>
+          <a href="mailto:hello@example.com">Email Us</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Agrumea Inspired Design. All rights reserved.</span>
+      <span>Made with love for nature.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // Scroll reveal animations
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.reveal').forEach(element => {
+        observer.observe(element);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(element => {
+        element.classList.add('visible');
+      });
+    }
+
+    // Dynamic copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
